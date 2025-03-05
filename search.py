@@ -306,7 +306,7 @@ if st.session_state['tags']:
 # 显示匹配的组织
 if st.session_state['matches']:
     st.subheader("Top Matching Organizations:")
-    for i, match in enumerate(st.session_state['matches'][:5], 1):
+    for i, match in enumerate(st.session_state['matches'][:20], 1):
         with st.expander(f"{i}. {match[1]}"):
             st.write(f"Description: {match[2]}")
             st.write(f"Website: {match[3]}")
@@ -334,7 +334,7 @@ if st.session_state['matches']:
             st.session_state['row'].update({
                 "Satisfaction Score": st.session_state['satisfaction_score'],
                 "Satisfaction Reason": st.session_state['satisfaction_reason'],
-                "Matched Organizations": [match[1] for match in st.session_state['matches'][:5]]  # 存储前5个匹配的组织名称
+                "Matched Organizations": [match[1] for match in st.session_state['matches'][:20]]  # 存储前5个匹配的组织名称
             })
             store_user_input_to_db(st.session_state['row'])
             
